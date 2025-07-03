@@ -50,3 +50,14 @@ Thumbs.db
 
 # VisualStudio files
 .vs/
+
+#Laravel
+/prueba-api/vendor
+/prueba-api/node_modules
+/prueba-api/public/storage
+/prueba-api/storage/*.key
+/prueba-api/.php.result.cache
+/prueba-api/Homested.json
+/prueba-api/Homested.yaml
+/prueba-api/npm-debug.Log
+/prueba-api/yarn-error.log
