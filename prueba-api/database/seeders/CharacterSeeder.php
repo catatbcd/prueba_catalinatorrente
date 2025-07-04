@@ -15,39 +15,18 @@ class CharacterSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        $charactersFetched=0;
-        $page=1;
-        while($charactersFetched<=10){
-             $response = Http::get("https://rickandmortyapi.com/api/character?page={$page}");
-             if($response->successful()){
-                $data=$response->json();
-
-                foreach ($data['results'] as $character ){
-                    if (charactersFetchet>10) break;
-
-                    DB::table('characters')-insert([
-                        'name'=> $character['name'],
-                        'status'=> $character['status'],
-                        'species'=> $character['species'],
-                        'type'=> $character['type'],
-                        'gender'=> $character['gender'],
-                        'origin'=> $character['origin']['name'],
-                        'location'=> $character['location']['name'],
-                        'image'=> $character['image'],
-                        'episode'=> json_encode($character['episode']),
-                        'url'=> $character['url'],
-                        'created'=> Carbon::parse($character['created']),
-                    ]);
-                }
-                $charactersFetched++;
-             }
-                $page++;
-            } else {
-                $this->command->error('Error al obtener datos de la API');
-                break;
-            }
-        }     
-           
+        DB::table('characters')-insert([
+            'name'=>'rick',
+            'status'=> 'alive',
+            'species'=> 'human',
+            'type'=> '',
+            'gender'=> 'male',
+            'origin'=> 'earth',
+            'location'=> 'earth',
+            'image'=> '',
+            'episode'=> '',
+            'url'=> '',
+            'created'=> Carbon::now(),
+        ]);
     }
 }
